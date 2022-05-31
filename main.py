@@ -1,9 +1,15 @@
-import dijkstra
 import datetime
+import dijkstra
+import lima
 
 if __name__=='__main__':
     time = datetime.datetime.now()
     hour = time.strftime("%H")
+
+    print("Calles")
+    lima.streets()
+    print("Intersecciones")
+    lima.intersections()
 
     print("Waze en progreso")
     
