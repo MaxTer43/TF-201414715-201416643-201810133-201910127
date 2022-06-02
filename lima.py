@@ -23,12 +23,13 @@ def intersections():
     street_id = []
     street_name = []
     origin_id = destiny_id = []
-    origin = destiny = []
+    intersection_origin_id = intersection_destiny_id = []
     distance = []
     speed = []
     cost = []
     inverse_cost = []
-    x = y = z = []
+    latitude_of_6 = length_of_6 = []
+    latitude_of_7 = length_of_7 = []
 
     with open ("Lima-intersecciones.csv") as textFile:
         for line in textFile:
@@ -42,15 +43,16 @@ def intersections():
             origin_id.append(intersection[3])
             destiny_id.append(intersection[4])
 
-            origin.append(intersection[5])
-            destiny.append(intersection[6])
+            intersection_origin_id.append(intersection[5])
+            intersection_destiny_id.append(intersection[6])
 
             distance.append(intersection[7])
             speed.append(intersection[8])
             cost.append(intersection[9])
             inverse_cost.append(intersection[10])
-            x.append(intersection[11])
-            y.append(intersection[12])
-            z.append(intersection[13])
+            latitude_of_6.append(intersection[11])
+            length_of_6.append(intersection[12])
+            latitude_of_7.append(intersection[13])
+            length_of_7.append(intersection[14])
 
             print(intersection)
