@@ -28,8 +28,8 @@ def intersections():
     speed = []
     cost1 = []
     cost2 = []
-    latitude_of_6 = length_of_6 = []
-    latitude_of_7 = length_of_7 = []
+    y1 = x1 = []
+    y2 = x2 = []
 
     with open ("Lima-intersecciones.csv") as textFile:
         for line in textFile:
@@ -50,9 +50,9 @@ def intersections():
             speed.append(intersection[8])
             cost1.append(intersection[9])
             cost2.append(intersection[10])
-            latitude_of_6.append(intersection[11])
-            length_of_6.append(intersection[12])
-            latitude_of_7.append(intersection[13])
-            length_of_7.append(intersection[14])
+            y1.append(intersection[11])
+            x1.append(intersection[12])
+            y2.append(intersection[13])
+            x2.append(intersection[14])
 
             print(intersection)
