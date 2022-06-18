@@ -5,12 +5,14 @@ import lima
 if __name__=='__main__':
     time = datetime.datetime.now()
     hour = time.strftime("%H")
+    min = time.strftime("%M")
 
     print("Calles")
     lima.streets()
     print("Intersecciones")
     lima.intersections()
 
+    print("Hora actual: " + hour + ":" + min);
     print("Waze en progreso")
     
     # g = dijkstra.Graph(9)
