@@ -26,8 +26,8 @@ def intersections():
     intersection_origin_id = intersection_destiny_id = []
     distance = []
     speed = []
-    cost = []
-    inverse_cost = []
+    cost1 = []
+    cost2 = []
     latitude_of_6 = length_of_6 = []
     latitude_of_7 = length_of_7 = []
 
@@ -48,8 +48,8 @@ def intersections():
 
             distance.append(intersection[7])
             speed.append(intersection[8])
-            cost.append(intersection[9])
-            inverse_cost.append(intersection[10])
+            cost1.append(intersection[9])
+            cost2.append(intersection[10])
             latitude_of_6.append(intersection[11])
             length_of_6.append(intersection[12])
             latitude_of_7.append(intersection[13])
