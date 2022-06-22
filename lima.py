@@ -13,7 +13,7 @@ def streets():
             street_id.append(street[0])
             street_name.append(street[1])
             intersections_amount.append(street[2])
-            print(street)
+            #print(street)
     #print(streets)
 
 def intersections():
@@ -55,4 +55,4 @@ def intersections():
             y2.append(intersection[13])
             x2.append(intersection[14])
 
-            print(intersection)
+            #print(intersection)
