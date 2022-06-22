@@ -54,6 +54,7 @@ if __name__=='__main__':
     map.place(x = -1, y = 100)
 
     i = 0
+    #La cantidad total de líneas en el archivo de intersecciones es 84673
     for i in range(84673):
         test = 0
 
