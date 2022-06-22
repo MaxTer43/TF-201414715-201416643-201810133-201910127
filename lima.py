@@ -64,4 +64,5 @@ def intersections():
             #print(intersection)
             #print(intersections[i])
             i+=1
+        #print("i en total es " + str(i))
         return intersections
