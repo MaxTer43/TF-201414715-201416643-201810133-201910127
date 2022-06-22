@@ -9,13 +9,13 @@ if __name__=='__main__':
     min = time.strftime("%M")
 
     #Lectura de datos
-    print("Calles")
+    #print("Calles")
     lima.streets()
-    print("Intersecciones")
+    #print("Intersecciones")
     lima.intersections()
 
-    print("Hora actual: " + hour + ":" + min);
-    print("Waze en progreso")
+    #print("Hora actual: " + hour + ":" + min);
+    #print("Waze en progreso")
 
     #Interfaz
 
@@ -52,6 +52,9 @@ if __name__=='__main__':
     Search.grid(row = 1, column = 2)
 
     map.place(x = -1, y = 100)
+
+    map.create_oval(50,50,20,20, outline='#1375BE')
+    map.create_line(35,35, 150, 150, fill="#1375BE", width=1)
 
     root.mainloop()
     
