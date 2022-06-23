@@ -1,10 +1,12 @@
 def streets():
+    #Definir arreglos
     streets = []
 
     street_id = []
     street_name = []
     intersections_amount = []
 
+    #Lectura de archivo de texto
     with open ("Lima-calles.csv") as textFile:
         for line in textFile:
             street = [item.strip() for item in line.split(';')]
@@ -13,10 +15,12 @@ def streets():
             street_id.append(street[0])
             street_name.append(street[1])
             intersections_amount.append(street[2])
-            print(street)
+            #print(street)
     #print(streets)
+        return streets
 
 def intersections():
+    #Definir arreglos
     intersections = []
 
     registry_id = []
@@ -31,7 +35,9 @@ def intersections():
     y1 = x1 = []
     y2 = x2 = []
 
+    #Lectura de archivo de textu
     with open ("Lima-intersecciones.csv") as textFile:
+        i = 0
         for line in textFile:
             intersection = [item.strip() for item in line.split(';')]
             intersections.append(intersection)
@@ -55,4 +61,8 @@ def intersections():
             y2.append(intersection[13])
             x2.append(intersection[14])
 
-            print(intersection)
+            #print(intersection)
+            #print(intersections[i])
+            i+=1
+        #print("i en total es " + str(i))
+        return intersections
