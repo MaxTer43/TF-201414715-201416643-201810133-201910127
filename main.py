@@ -1,8 +1,16 @@
 import datetime
 import dijkstra
-from tkinter import *
+from tkinter import * 
 
-def streets():
+if __name__=='__main__':
+    root = Tk()
+    root.geometry("800x600")
+    root.title("Mapa")
+
+    map = Canvas(root, width = 800,
+                        height = 450,
+                        background = "black")
+
     #Definir arreglos
     streets = []
 
@@ -22,7 +30,6 @@ def streets():
             #print(street)
     #print(streets)
 
-def intersections():
     #Definir arreglos
     intersections = []
 
@@ -65,9 +72,15 @@ def intersections():
             x2.append(intersection[14])
             #print(intersection)
             #print(intersections[i])
+            map.create_oval(float(x1[i]), float(y1[i]), float(x1[i])+10, float(y1[i])+10, outline='#1375BE')
+            map.create_oval(float(x2[i]), float(y2[i]), float(x2[i])+10, float(y2[i])+10, outline='#1375BE')
+            #map.create_line(35,35, 150, 150, fill="#1375BE", width=1)
+            map.create_line(float(x1[i])+5, float(y1[i])+5, float(x2[i])+5, float(y2[i])+5, fill="#1375BE", width=1)
+            #if (i == 0):
+            #    map.create_oval(float(x1[i]), float(y1[i]), float(0)+10, float(0)+10, outline='#1375BE')
+
             i+=1
 
-if __name__=='__main__':
     time = datetime.datetime.now()
     hour = time.strftime("%H")
     min = time.strftime("%M")
@@ -77,16 +90,13 @@ if __name__=='__main__':
     
     #print("Intersecciones")
     
-    streets()
-    intersections()
+    #streets()
+    #intersections()
+
     #print("Hora actual: " + hour + ":" + min);
     #print("Waze en progreso")
 
     #Interfaz
-
-    root = Tk()
-    root.geometry("800x600")
-    root.title("Mapa")
 
     Flip = Button(root, text = "Invertir", width = 10, height = 2)
     Search = Button(root, text = "Buscar", width = 10, height = 2)
@@ -102,10 +112,6 @@ if __name__=='__main__':
                 width = 80,
                 bg = "light blue")
 
-    map = Canvas(root, width = 800,
-                        height = 450,
-                        background = "black")
-
     l1.grid(row = 0, column = 0)
     l2.grid(row = 1, column = 0)
     l3.place(x = 350, y = 565)
@@ -120,7 +126,7 @@ if __name__=='__main__':
 
     map.place(x = -1, y = 100)
 
-    i = 0
+    #i = 0
 
     #La cantidad total de líneas en el archivo de intersecciones es 84673
     #for i in range(84673):
@@ -128,7 +134,7 @@ if __name__=='__main__':
     #    map.create_oval(10, 10, intersection[13], intersection[14], outline='#1375BE')
     
 
-    map.create_oval(50,50,200,20, outline='#1375BE')
+    
     #map.create_line(35,35, 150, 150, fill="#1375BE", width=1)
 
     root.mainloop()
