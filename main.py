@@ -36,14 +36,18 @@ if __name__=='__main__':
     registry_id = []
     street_id = []
     street_name = []
-    origin_id = destiny_id = []
-    intersection_origin_id = intersection_destiny_id = []
+    origin_id = []
+    destiny_id = []
+    intersection_origin_id = []
+    intersection_destiny_id = []
     distance = []
     speed = []
     cost1 = []
     cost2 = []
-    y1 = x1 = []
-    y2 = x2 = []
+    y1 = []
+    x1 = []
+    y2 = []
+    x2 = []
 
     #Lectura de archivo de texto
     with open ("Lima-intersecciones.csv") as textFile:
@@ -70,17 +74,24 @@ if __name__=='__main__':
             x1.append(intersection[12])
             y2.append(intersection[13])
             x2.append(intersection[14])
+
             #print(intersection)
             #print(intersections[i])
-            map.create_oval(float(x1[i]), float(y1[i]), float(x1[i])+10, float(y1[i])+10, outline='#1375BE')
-            map.create_oval(float(x2[i]), float(y2[i]), float(x2[i])+10, float(y2[i])+10, outline='#1375BE')
-            #map.create_line(35,35, 150, 150, fill="#1375BE", width=1)
-            map.create_line(float(x1[i])+5, float(y1[i])+5, float(x2[i])+5, float(y2[i])+5, fill="#1375BE", width=1)
+            
+            map.create_oval(float(x1[i])+78, float(y1[i])+13, float(x1[i])+10+78, float(y1[i])+10+13, outline='#1375BE')
+            map.create_oval(float(x2[i])+78, float(y2[i])+13, float(x2[i])+10+78, float(y2[i])+10+13, outline='#1375BE')
+
+            map.create_line(float(x1[i])+5+78, float(y1[i])+5+13, float(x2[i])+5+78, float(y2[i])+5+13, fill="#1375BE", width=100)
+            
             #if (i == 0):
             #    map.create_oval(float(x1[i]), float(y1[i]), float(0)+10, float(0)+10, outline='#1375BE')
 
             i+=1
 
+    #print(str(x1) + "," + str(y1))
+
+    print("Coordenadas: " + x1[0] + ";" + y1[0])
+    
     time = datetime.datetime.now()
     hour = time.strftime("%H")
     min = time.strftime("%M")
