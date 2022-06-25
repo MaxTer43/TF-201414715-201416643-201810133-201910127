@@ -1,6 +1,13 @@
-import datetime
 import dijkstra
 from tkinter import *
+
+#Obtener hora del sistema
+from time import strftime
+
+def time():
+    string = strftime('%H:%M:%S %p')
+    l3.config(text = string)
+    l3.after(1000, time)
 
 if __name__=='__main__':
     root = Tk()
@@ -146,22 +153,6 @@ if __name__=='__main__':
         map.create_oval((x2[j]-menorX)*scale, (y2[j]-menorY)*scale, (x2[j]-menorX)*scale+10, (y2[j]-menorY)*scale+10, outline='#1375BE')
         map.create_line((x1[j]-menorX)*scale+5, (y1[j]-menorY)*scale+5, (x2[j]-menorX)*scale+5, (y2[j]-menorY)*scale+5, fill="#1375BE", width=1)
 
-    #map.create_oval((x1[0]-menorX)*950, (y1[0]-menorY)*950, (x1[0]-menorX)*950+10, (y1[0]-menorY)*950+10, outline='#1375BE')
-    time = datetime.datetime.now()
-    hour = time.strftime("%H")
-    min = time.strftime("%M")
-
-    #Lectura de datos
-    #print("Calles")
-    
-    #print("Intersecciones")
-    
-    #streets()
-    #intersections()
-
-    #print("Hora actual: " + hour + ":" + min);
-    #print("Waze en progreso")
-
     #Interfaz
 
     Flip = Button(root, text = "Invertir", width = 10, height = 2)
@@ -169,7 +160,7 @@ if __name__=='__main__':
 
     l1 = Label(text = "Inicio")
     l2 = Label(text = "Final")
-    l3 = Label(text= hour + ":" + min)
+    l3 = Label(root)
 
     inputtxt1 = Text(root, height = 2,
                 width = 80,
@@ -187,35 +178,8 @@ if __name__=='__main__':
 
     Flip.grid(row = 0, column = 2)
     Search.grid(row = 1, column = 2)
-
     
 
     map.place(x = -1, y = 100)
-
-    #i = 0
-
-    #La cantidad total de líneas en el archivo de intersecciones es 84673
-    #for i in range(84673):
-    #    intersection = [item.strip() for item in i.split(';')]
-    #    map.create_oval(10, 10, intersection[13], intersection[14], outline='#1375BE')
-    
-
-    
-    #map.create_line(35,35, 150, 150, fill="#1375BE", width=1)
-
+    time()
     root.mainloop()
-    
-    
-    # g = dijkstra.Graph(9)
-    # g.graph = [[2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 2, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 7, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9],
-    #            [2, 2, 1, 8, 6, 2, 1, 0, 9]
-    #            ]
- 
-    # g.dijkstra(0)
