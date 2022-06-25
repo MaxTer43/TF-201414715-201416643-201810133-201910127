@@ -49,9 +49,13 @@ if __name__=='__main__':
     x2 = []
     y2 = []
 
+    menorX = 0
+    menorY = 0
+    mayorX = 0
+    mayorY = 0
     #Lectura de archivo de texto
     with open ("Lima-intersecciones.csv") as textFile:
-        #i = 0
+        i = 0
         for line in textFile:
             intersection = [item.strip() for item in line.split(';')]
             intersections.append(intersection)
@@ -85,13 +89,41 @@ if __name__=='__main__':
             
             #if (i == 0):
             #    map.create_oval(float(x1[i]), float(y1[i]), float(0)+10, float(0)+10, outline='#1375BE')
+            if (i == 0):
+                menorX = x2[i]
+                menorY = y2[i]
+                mayorX = x1[i]
+                mayorY = y1[i]
+            else:
+                if (menorX < x1[i]):
+                    menorX = x1[i]
+                if (menorY < y1[i]):
+                    menorY = y1[i]
+                if (menorX < x2[i]):
+                    menorX = x2[i]
+                if (menorY < y2[i]):
+                    menorY = y2[i]
+                
+                if (mayorX > x1[i]):
+                    mayorX = x1[i]
+                if (mayorY > y1[i]):
+                    mayorY = y1[i]
+                if (mayorX > x2[i]):
+                    mayorX = x2[i]
+                if (mayorY > y2[i]):
+                    mayorY = y2[i]
 
-            #i+=1
+            i+=1
 
     #print(str(x1) + "," + str(y1))
 
-    print("Coordenadas: " + x1[0] + ";" + y1[0])
+    #print("Coordenadas: " + x1[0] + ";" + y1[0])
     
+    print("X menor: " + menorX)
+    print("X mayor: " + mayorX)
+    print("Y menor: " + menorY)
+    print("Y mayor: " + mayorY)
+
     time = datetime.datetime.now()
     hour = time.strftime("%H")
     min = time.strftime("%M")
