@@ -53,6 +53,7 @@ if __name__=='__main__':
     menorY = 0
     mayorX = 0
     mayorY = 0
+
     #Lectura de archivo de texto
     with open ("Lima-intersecciones.csv") as textFile:
         i = 0
@@ -70,10 +71,10 @@ if __name__=='__main__':
             intersection_origin_id.append(intersection[5])
             intersection_destiny_id.append(intersection[6])
 
-            distance.append(intersection[7])
-            speed.append(intersection[8])
-            cost1.append(intersection[9])
-            cost2.append(intersection[10])
+            distance.append(float(intersection[7]))
+            speed.append(float(intersection[8]))
+            cost1.append(float(intersection[9]))
+            cost2.append(float(intersection[10]))
             x1.append(float(intersection[11]))
             y1.append(float(intersection[12]))
             x2.append(float(intersection[13]))
@@ -95,22 +96,22 @@ if __name__=='__main__':
                 mayorX = x1[i]
                 mayorY = y1[i]
             else:
-                if (menorX < x1[i]):
+                if (menorX > x1[i]):
                     menorX = x1[i]
-                if (menorY < y1[i]):
+                if (menorY > y1[i]):
                     menorY = y1[i]
-                if (menorX < x2[i]):
+                if (menorX > x2[i]):
                     menorX = x2[i]
-                if (menorY < y2[i]):
+                if (menorY > y2[i]):
                     menorY = y2[i]
                 
-                if (mayorX > x1[i]):
+                if (mayorX < x1[i]):
                     mayorX = x1[i]
-                if (mayorY > y1[i]):
+                if (mayorY < y1[i]):
                     mayorY = y1[i]
-                if (mayorX > x2[i]):
+                if (mayorX < x2[i]):
                     mayorX = x2[i]
-                if (mayorY > y2[i]):
+                if (mayorY < y2[i]):
                     mayorY = y2[i]
 
             i+=1
@@ -127,7 +128,24 @@ if __name__=='__main__':
     distanciaY = menorY-mayorY
     print("Distancia X: " + str(distanciaX))
     print("Distancia Y: " + str(distanciaY))
+    ancho = distanciaX*950
+    largo = distanciaY*950
+    print(str(ancho))
+    print(str(largo))
+    print("Total X: " + str((x1[0]-menorX)))
 
+    xr1 = []
+    yr1 = []
+    xr2 = []
+    yr2 = []
+
+    j = 0
+    for j in range(i):
+        map.create_oval((x1[j]-menorX)*950, (y1[j]-menorY)*950, (x1[j]-menorX)*950+10, (y1[j]-menorY)*950+10, outline='#1375BE')
+        map.create_oval((x2[j]-menorX)*950, (y2[j]-menorY)*950, (x2[j]-menorX)*950+10, (y2[j]-menorY)*950+10, outline='#1375BE')
+        map.create_line((x1[j]-menorX)*950+5, (y1[j]-menorY)*950+5, (x2[j]-menorX)*950+5, (y2[j]-menorY)*950+5, fill="#1375BE", width=1)
+
+    #map.create_oval((x1[0]-menorX)*950, (y1[0]-menorY)*950, (x1[0]-menorX)*950+10, (y1[0]-menorY)*950+10, outline='#1375BE')
     time = datetime.datetime.now()
     hour = time.strftime("%H")
     min = time.strftime("%M")
