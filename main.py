@@ -1,6 +1,6 @@
 import datetime
 import dijkstra
-from tkinter import * 
+from tkinter import *
 
 if __name__=='__main__':
     root = Tk()
@@ -74,10 +74,10 @@ if __name__=='__main__':
             speed.append(intersection[8])
             cost1.append(intersection[9])
             cost2.append(intersection[10])
-            x1.append(intersection[11])
-            y1.append(intersection[12])
-            x2.append(intersection[13])
-            y2.append(intersection[14])
+            x1.append(float(intersection[11]))
+            y1.append(float(intersection[12]))
+            x2.append(float(intersection[13]))
+            y2.append(float(intersection[14]))
 
             #print(intersection)
             #print(intersections[i])
@@ -119,10 +119,14 @@ if __name__=='__main__':
 
     #print("Coordenadas: " + x1[0] + ";" + y1[0])
     
-    print("X menor: " + menorX)
-    print("X mayor: " + mayorX)
-    print("Y menor: " + menorY)
-    print("Y mayor: " + mayorY)
+    print("X menor: " + str(menorX))
+    print("X mayor: " + str(mayorX))
+    print("Y menor: " + str(menorY))
+    print("Y mayor: " + str(mayorY))
+    distanciaX = menorX-mayorX
+    distanciaY = menorY-mayorY
+    print("Distancia X: " + str(distanciaX))
+    print("Distancia Y: " + str(distanciaY))
 
     time = datetime.datetime.now()
     hour = time.strftime("%H")
