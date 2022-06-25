@@ -5,7 +5,7 @@ from tkinter import *
 from time import strftime
 
 def time():
-    string = strftime('%H:%M:%S %p')
+    string = strftime('%H:%M:%S')
     l3.config(text = string)
     l3.after(1000, time)
 
