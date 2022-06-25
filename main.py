@@ -139,11 +139,12 @@ if __name__=='__main__':
     xr2 = []
     yr2 = []
 
+    scale = 800
     j = 0
     for j in range(i):
-        map.create_oval((x1[j]-menorX)*950, (y1[j]-menorY)*950, (x1[j]-menorX)*950+10, (y1[j]-menorY)*950+10, outline='#1375BE')
-        map.create_oval((x2[j]-menorX)*950, (y2[j]-menorY)*950, (x2[j]-menorX)*950+10, (y2[j]-menorY)*950+10, outline='#1375BE')
-        map.create_line((x1[j]-menorX)*950+5, (y1[j]-menorY)*950+5, (x2[j]-menorX)*950+5, (y2[j]-menorY)*950+5, fill="#1375BE", width=1)
+        map.create_oval((x1[j]-menorX)*scale, (y1[j]-menorY)*scale, (x1[j]-menorX)*scale+10, (y1[j]-menorY)*scale+10, outline='#1375BE')
+        map.create_oval((x2[j]-menorX)*scale, (y2[j]-menorY)*scale, (x2[j]-menorX)*scale+10, (y2[j]-menorY)*scale+10, outline='#1375BE')
+        map.create_line((x1[j]-menorX)*scale+5, (y1[j]-menorY)*scale+5, (x2[j]-menorX)*scale+5, (y2[j]-menorY)*scale+5, fill="#1375BE", width=1)
 
     #map.create_oval((x1[0]-menorX)*950, (y1[0]-menorY)*950, (x1[0]-menorX)*950+10, (y1[0]-menorY)*950+10, outline='#1375BE')
     time = datetime.datetime.now()
