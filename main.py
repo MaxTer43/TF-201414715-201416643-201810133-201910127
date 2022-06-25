@@ -139,7 +139,7 @@ if __name__=='__main__':
     xr2 = []
     yr2 = []
 
-    scale = 800
+    scale = 880
     j = 0
     for j in range(i):
         map.create_oval((x1[j]-menorX)*scale, (y1[j]-menorY)*scale, (x1[j]-menorX)*scale+10, (y1[j]-menorY)*scale+10, outline='#1375BE')
