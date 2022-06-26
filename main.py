@@ -27,7 +27,7 @@ if __name__=='__main__':
     intersections_amount = []
 
     #Lectura de archivo de texto
-    with open ("Lima-calles.csv") as textFile:
+    with open ("Lima-calles.csv", encoding='utf-8') as textFile:
         for line in textFile:
             street = [item.strip() for item in line.split(';')]
             streets.append(street)
@@ -63,7 +63,7 @@ if __name__=='__main__':
     mayorY = 0
 
     #Lectura de archivo de texto
-    with open ("Lima-intersecciones.csv") as textFile:
+    with open ("Lima-intersecciones.csv", encoding='utf-8') as textFile:
         i = 0
         for line in textFile:
             intersection = [item.strip() for item in line.split(';')]
