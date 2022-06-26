@@ -4,8 +4,11 @@ from tkinter import *
 #Obtener hora del sistema
 from time import strftime
 
+def moveUp(event):
+    print('Move up')
+
 def time():
-    string = strftime('%H:%M:%S')
+    string = strftime('%H:%M')
     l3.config(text = string)
     l3.after(1000, time)
 
@@ -14,9 +17,7 @@ if __name__=='__main__':
     root.geometry("800x600")
     root.title("Mapa")
 
-    map = Canvas(root, width = 800,
-                        height = 450,
-                        background = "black")
+    map = Canvas(root, width = 800, height = 450, background = "black")
 
     #Definir arreglos
     streets = []
@@ -141,11 +142,6 @@ if __name__=='__main__':
     print(str(largo))
     print("Total X: " + str((x1[0]-menorX)))
 
-    xr1 = []
-    yr1 = []
-    xr2 = []
-    yr2 = []
-
     scale = 880
     j = 0
     for j in range(i):
@@ -162,12 +158,8 @@ if __name__=='__main__':
     l2 = Label(text = "Final")
     l3 = Label(root)
 
-    inputtxt1 = Text(root, height = 2,
-                width = 80,
-                bg = "light yellow")
-    inputtxt2 = Text(root, height = 2,
-                width = 80,
-                bg = "light blue")
+    inputtxt1 = Text(root, height = 2, width = 80, bg = "light yellow")
+    inputtxt2 = Text(root, height = 2, width = 80, bg = "light blue")
 
     l1.grid(row = 0, column = 0)
     l2.grid(row = 1, column = 0)
@@ -181,5 +173,7 @@ if __name__=='__main__':
     
 
     map.place(x = -1, y = 100)
+    map.bind('<Up>',    moveUp)
+    map.focus()
     time()
     root.mainloop()
