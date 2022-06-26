@@ -28,6 +28,7 @@ if __name__=='__main__':
 
     #Lectura de archivo de texto
     with open ("Lima-calles.csv", encoding='utf-8') as textFile:
+        i = 0
         for line in textFile:
             street = [item.strip() for item in line.split(';')]
             streets.append(street)
@@ -36,6 +37,12 @@ if __name__=='__main__':
             street_name.append(street[1])
             intersections_amount.append(street[2])
             #print(street)
+
+            # i+=1
+
+            # if (i == 10000):
+            #     break
+
     #print(streets)
 
     #Definir arreglos
@@ -124,6 +131,10 @@ if __name__=='__main__':
 
             i+=1
 
+            #prueba solo con 30000 nodos para no cargar demasiado en memoria
+            if (i == 30000):
+                break
+
     #print(str(x1) + "," + str(y1))
 
     #print("Coordenadas: " + x1[0] + ";" + y1[0])
@@ -151,8 +162,29 @@ if __name__=='__main__':
 
     #Interfaz
 
-    Flip = Button(root, text = "Invertir", width = 10, height = 2)
-    Search = Button(root, text = "Buscar", width = 10, height = 2)
+    # for i in registry_id:
+    #     print(i)
+
+    def retrieveInputInicio():
+        inp = inputtxt1.get(1.0, END)
+        inp = inp.rstrip('\n')
+        indice = registry_id.index(inp)
+        print("Street name: " + street_name[indice])
+        print("Street id: " + street_id[indice])
+        print("Origin id: " + origin_id[indice])
+        print("Destiny id: " + destiny_id[indice])
+
+    def retrieveInputFinal():
+        inp = inputtxt2.get(1.0, END)
+        inp = inp.rstrip('\n')
+        indice = registry_id.index(inp)
+        print("Street name: " + street_name[indice])
+        print("Street id: " + street_id[indice])
+        print("Origin id: " + origin_id[indice])
+        print("Destiny id: " + destiny_id[indice])
+        
+    Flip = Button(root, text = "Invertir", width = 10, height = 2, command=retrieveInputInicio)
+    Search = Button(root, text = "Buscar", width = 10, height = 2, command=retrieveInputFinal)
 
     l1 = Label(text = "Inicio")
     l2 = Label(text = "Final")
