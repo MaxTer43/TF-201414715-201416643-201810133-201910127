@@ -1,17 +1,13 @@
-import main
-import datetime
+import datetime as datetime
 
-main.time = datetime.datetime.now()
-main.hour = main.time.strftime("%H")
-print("hora: " + main.hour)
+time = datetime.datetime.now()
+hour = time.strftime("%H")
 
 def traffic_criteria():
-    if (main.hour >= "07" and main.hour <= "09") or (main.hour >= "18" and main.hour <= "23"):
+    if (hour >= "07" and hour <= "09") or (hour >= "18" and hour <= "23"):
         trafficFactor = 1
-    elif main.hour >= "10" and main.hour <= "17":
+    elif hour >= "10" and hour <= "17":
         trafficFactor = 0.5
     else:
         trafficFactor = 0.25
     return trafficFactor
-
-print("Factor de tráfico: " + str(traffic_criteria()))

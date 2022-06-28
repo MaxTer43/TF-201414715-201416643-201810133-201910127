@@ -1,7 +1,8 @@
 from tkinter import *
 from time import strftime
-import uwu
-import os
+from PIL import Image, ImageTk
+
+import resources.uwu as uwu
 
 def time():
     string = strftime('%H:%M')
@@ -9,19 +10,17 @@ def time():
     l3.after(1, time)
 
 def updateImage():
-   img = PhotoImage(file='image/graphTF.gv.png')
+   image=Image.open('image/graphTF.gv.png')
+   img2=image.resize((780, 580))
+   img = ImageTk.PhotoImage(img2)
    lblImage.configure(image=img)
    lblImage.image = img
-
 
 def drawGraph():
     inp1 = inputtxt1.get(1.0, "end-1c")
     inp2 = inputtxt2.get(1.0, "end-1c")
     uwu.draw_graphTf(int(inp1), int(inp2))
-    callback
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-    #updateImage()
+    updateImage()
 
 def flip():
     inp1 = inputtxt1.get(1.0, "end-1c")
@@ -29,40 +28,26 @@ def flip():
 
 if __name__=='__main__':
     root = Tk()
-    root.geometry("1024x720")
+    root.geometry("980x720")
     root.title("Mapa uwu")
 
-    img = PhotoImage(file='image/graphTF.gv.png')
-    lblImage = Label(root, image = img).place(x=100, y = 100)
+    image=Image.open('image/graphTF.gv.png')
+    img2=image.resize((760, 560))
+    img = ImageTk.PhotoImage(img2)
+    lblImage = Label(root, image = img)
+    lblImage.pack(fill='both', expand=True)
 
-
-    l1 = Label(text = "Inicio")
-    l2 = Label(text = "Final")
     l3 = Label(root)
+    l3.pack()
 
-    inputtxt1 = Text(root, height = 2, width = 80, bg = "light yellow")
-    inputtxt2 = Text(root, height = 2, width = 80, bg = "light blue")
-
+    inputtxt1 = Text(root, height = 1, width = 80, bg = "light yellow")
+    inputtxt1.pack()
+    inputtxt2 = Text(root, height = 1, width = 80, bg = "light blue")
+    inputtxt2.pack()
 
     Flip = Button(root, text = "Invertir", width = 10, height = 2, command=flip)
-    Search = Button(root, text = "Buscar", width = 10, height = 2, command=drawGraph)
+    Search = Button(root, text = "Buscar", width = 10, height = 1, command=drawGraph)
+    Search.pack()
 
-
-    l1.grid(row = 0, column = 0)
-    l2.grid(row = 1, column = 0)
-    l3.place(x = 350, y = 695)
-
-    inputtxt1.grid(row = 0, column = 1)
-    inputtxt2.grid(row = 1, column = 1)
-
-    #Flip.grid(row = 0, column = 2)
-    Search.grid(row = 1, column = 2)
-    
-    def callback(e):
-        img = ImageTk.PhotoImage(file='image/graphTF.gv.png')
-        lblImage = Label(root, image = img).place(x=100, y = 100)
-        lblImage.configure(image=img)
-    
     time()
-    root.bind("<Return>", updateImage)
     root.mainloop()
