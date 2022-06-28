@@ -34,6 +34,10 @@ sudo apt install graphviz
 ```
 sudo apt-get install python3-pil.imagetk
 ```
+#### Pillow
+```
+pip install pillow
+```
 #### Tkinter
 ```
 sudo apt-get install python-tk
