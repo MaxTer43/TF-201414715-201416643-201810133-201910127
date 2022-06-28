@@ -2,8 +2,9 @@ digraph graphTF {
 	graph [layout=sfdp]
 	node [color=orangered fontcolor=mediumslateblue fontname=monospace fontsize=8 height=0.1 width=0.1]
 	edge [color=gray fontname=monospace fontsize=8]
-	39 -> 21 [color=orange dir=forward penwidth=2]
-	16 -> 39 [color=orange dir=forward penwidth=2]
+	15 -> 13 [color=orange dir=forward penwidth=2]
+	33 -> 23 [color=orange dir=forward penwidth=2]
+	13 -> 33 [color=orange dir=forward penwidth=2]
 	1 -> 6
 	1 -> 18
 	1 -> 30
@@ -25,11 +26,10 @@ digraph graphTF {
 	12 -> 1
 	13 -> 4
 	13 -> 11
-	13 -> 33
 	14 -> 16
 	14 -> 21
 	14 -> 40
-	15 -> 13
+	16 -> 39
 	17 -> 3
 	17 -> 7
 	18 -> 17
@@ -55,7 +55,6 @@ digraph graphTF {
 	32 -> 3
 	32 -> 27
 	33 -> 22
-	33 -> 23
 	34 -> 5
 	34 -> 6
 	34 -> 34
@@ -67,6 +66,7 @@ digraph graphTF {
 	37 -> 8
 	37 -> 36
 	38 -> 9
+	39 -> 21
 	40 -> 10
 	40 -> 38
 }
