@@ -19,7 +19,7 @@ def updateImage():
 def drawGraph():
     inp1 = inputtxt1.get(1.0, "end-1c")
     inp2 = inputtxt2.get(1.0, "end-1c")
-    uwu.draw_graphTf(int(inp1), int(inp2), [-1, -1, 1]) #List de adyacencia.
+    uwu.draw_graphTf(int(inp1), int(inp2)) #List de adyacencia.
     updateImage()
 
 def flip():

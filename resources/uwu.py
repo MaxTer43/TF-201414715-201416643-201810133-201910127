@@ -1,7 +1,11 @@
-import graphviz as gv
 import resources.dijkstra as dj
-import resources.classesT as cl
 import resources.trafficFactor as tra
+import graphviz as gv
+import resources.classesT as cl
+
+
+import resources.dfs as dfs
+import resources.bfs as bfs
 
 intersections = list()
 with open("data/Lima-intersecciones.csv", "r", -1, "utf-8-sig") as files:
@@ -42,7 +46,7 @@ def generateList():
 
 
 
-def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot"):
+def drawG_al(G,  directed=False, weighted=True, path1=[], path2=[], path3=[], layout="dot"):
   graph = gv.Digraph("graphTF")
   graph.graph_attr["layout"] = layout
   graph.edge_attr["color"] = "gray"
@@ -55,10 +59,11 @@ def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot")
   graph.edge_attr["fontsize"] = "18"
   graph.edge_attr["fontname"] = "monospace"
   n = len(G)
-  added = set()
+  added1 = set()
   added2 = set()
+  added3 = set()
 
-  for v, u in enumerate(path):
+  for v, u in enumerate(path1):
     if u != -1:
       if weighted:
         for vi, w in G[u]:
@@ -67,15 +72,15 @@ def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot")
         graph.edge(str(u), str(v), str(w), dir="forward", penwidth="2", color="green")
       else:
         graph.edge(str(u), str(v), dir="forward", penwidth="2", color="green")
-      added.add(f"{u},{v}")
-      added.add(f"{v},{u}")
+      added1.add(f"{u},{v}")
+      added1.add(f"{v},{u}")
 
   for u in range(n):
     for v, w in G[u]:
       draw = False
-      if not directed and not f"{u},{v}" in added:  
-        added.add(f"{u},{v}")
-        added.add(f"{v},{u}")
+      if not directed and not f"{u},{v}" in added1:  
+        added1.add(f"{u},{v}")
+        added1.add(f"{v},{u}")
         draw = True
       elif directed:
         draw = True
@@ -84,7 +89,6 @@ def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot")
           graph.edge(str(u), str(v), str(w))
         else:
           graph.edge(str(u), str(v))
-
 
   for v, u in enumerate(path2):
     if u != -1:
@@ -97,6 +101,33 @@ def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot")
         graph.edge(str(u), str(v), dir="forward", penwidth="2", color="blue")
       added2.add(f"{u},{v}")
       added2.add(f"{v},{u}")
+  
+  for u in range(n):
+    for v, w in G[u]:
+      draw2 = False
+      if not directed and not f"{u},{v}" in added3:  
+        added3.add(f"{u},{v}")
+        added3.add(f"{v},{u}")
+        draw2 = True
+      elif directed:
+        draw2 = True
+      if draw2:
+        if weighted:
+          graph.edge(str(u), str(v), str(w))
+        else:
+          graph.edge(str(u), str(v))
+
+  for v, u in enumerate(path3):
+    if u != -1:
+      if weighted:
+        for vi, w in G[u]:
+          if vi == v:
+            break
+        graph.edge(str(u), str(v), str(w), dir="forward", penwidth="2", color="red")
+      else:
+        graph.edge(str(u), str(v), dir="forward", penwidth="2", color="red")
+      added3.add(f"{u},{v}")
+      added3.add(f"{v},{u}")
   
   for u in range(n):
     for v, w in G[u]:
@@ -115,15 +146,15 @@ def drawG_al(G,  directed=False, weighted=True, path=[], path2=[], layout="dot")
 
   return graph
 
-def draw_graphTf(start, meta, x):
+def draw_graphTf(start, meta):
   generateList()
-  path =  dj.dijkstra(listAd, start, meta)
-  path =  dj.dijkstra(listAd, start, meta)
-  path =  dj.dijkstra(listAd, start, meta)
+  path1 =  dj.dijkstra_tf(listAd, start, meta)
+  path2 =  dfs.dfs_tf(listAd, start, meta)
+  path3 =  bfs.bfs_tf(listAd, start, meta)
 
-  if path == -1: 
+  if path1 == -1: 
     print("No hay camino")
   else: 
-    graphTF = drawG_al(listAd, directed=False, weighted=True, path=path, path2=x)
+    graphTF = drawG_al(listAd, directed=False, weighted=True, path1=path1, path2=path2, path3=path3)
     graphTF.format = 'png'
     graphTF.render(directory="image")
