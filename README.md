@@ -15,6 +15,14 @@ pip install graphviz
 ```
 pip install pillow 
 ```
+#### Tkinter (En caso de no tenerlo por defecto al instalar Python3)
+```
+pip install tkinter
+```
+#### O
+```
+pip install tk
+```
 ##### En caso de desear la versión específica de Graphviz utilizada en Windows (2.38), descargar de este enlace: https://www.npackd.org/p/org.graphviz.Graphviz/2.38
 ### Ubuntu
 ##### Ingresar en la terminal del editor o del sistema operativo lo siguiente:
