@@ -1,9 +1,7 @@
+import graphviz as gv
 import resources.dijkstra as dj
 import resources.trafficFactor as tra
-import graphviz as gv
 import resources.classesT as cl
-
-
 import resources.dfs as dfs
 import resources.bfs as bfs
 
